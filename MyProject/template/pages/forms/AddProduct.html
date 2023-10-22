@@ -12,27 +12,25 @@
         <div class="card">
           <div class="card-body">
             <h4 class="card-title pb-4">Add Product Information</h4>
-            <form class="forms-sample">
+            <form class="forms-sample" method="post">
+              {% csrf_token %}
               <div class="form-group">
                 <label for="exampleInputName1">Product Name</label>
-                <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
+                <input type="text" class="form-control" id="exampleInputName1" name="productName" placeholder="Name">
               </div>
               <div class="form-group">
                 <label for="exampleInputName1">Product Price</label>
-                <input type="text" class="form-control" id="exampleInputName1" placeholder="Price">
+                <input type="text" class="form-control" id="exampleInputName1" name="productPrice" placeholder="Price">
               </div>
               <div class="form-group">
                 <label for="exampleTextarea1">Product Description</label>
-                <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                <textarea class="form-control" id="exampleTextarea1" name="productDescription" rows="4"></textarea>
               </div>
                 <div class="form-group">
                 <label>File upload</label>
                 <input type="file" name="img[]" class="file-upload-default">
                 <div class="input-group col-xs-12">
-                  <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
-                  <span class="input-group-append">
-                    <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
-                  </span>
+                  <input type="file" class="btn btn-gradient-primary btn-fw" name="images" placeholder="Upload Image">
                 </div>
                 </div>
               
