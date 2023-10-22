@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %} Product Category {% endblock title %}
+
+{% block body %}
+<div class="content-wrapper">
+  <div class="page-header">
+    <h3 class="page-title"> Product List </h3>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="btn btn-gradient-primary btn-fw" href="{% url 'ProudctAdd' %}">Add Product</a></li>
+      </ol>
+    </nav>
+  </div>
+  <div class="row">
+
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Listed Product</h4>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Sr.No.</th>
+              <th> Product Image </th>
+              <th> Product ID</th>
+              <th> Product Name </th>
+              <th> Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- product list  -->
+            <tr>
+              <td>
+                1.
+              </td>
+              <td class="py-1">
+                <img src="../../assets/images/faces-clipart/pic-1.png" alt="image">
+              </td>
+              <td> P-1000251541</td>
+              <td>
+                Sample Product
+              </td>
+              <td> <i class="mdi mdi-currency-inr menu-icon"></i>77.99 </td>
+            </tr>
+            <!-- product list table end  -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}
