@@ -1,0 +1,35 @@
+body {
+    background: #e3dddd;
+  }
+  .text-color {
+    color: #0c0403;
+  }
+  .card {
+    width: 350px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #a83ebd;
+    border: none;
+    position: relative;
+  }
+  .container {
+    height: 100vh;
+  }
+  .mobile-text {
+    color: #0c0403;
+    font-size: 15px;
+  }
+  .form-control {
+    margin-right: 12px;
+  }
+  .form-control:focus {
+    color: #495057;
+    background-color: #ffff;
+    border-color: #0c0403;
+    outline: 0;
+    box-shadow: none;
+  }
+  .cursor {
+    cursor: pointer;
+  }
+  

@@ -17,6 +17,26 @@ class UserInformation(models.Model):
     BusinessName=models.CharField(max_length=122)
     BusinessAddress=models.TextField(max_length=122)
     GstNumber=models.CharField(max_length=122,null=True,default="No GST Number")
-    BusinessLogo=models.ImageField(upload_to="Logo")
+    EmailId=models.CharField(max_length=122)
+    MobileNumber=models.IntegerField()
+    
+    
+class MobileVerificationNumber(models.Model):
+    MobileNumber=models.CharField(max_length=122)
+    verified=models.BooleanField(default=False)
+    
+class SellerInformation(models.Model):
+    SellerName=models.CharField(max_length=122)
+    DOB=models.CharField(max_length=122)
+    Primary_key=models.CharField(max_length=122)
+    
+class SellerBuinsessInformation(models.Model):
+    BusinessName=models.CharField(max_length=122)
+    GstNumber=models.CharField(max_length=122,null=True)
+    Password=models.CharField(max_length=122)
+    Primary_key=models.CharField(max_length=122)    
+
+    
+    
     
     

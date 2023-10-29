@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock title %}
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title">Profile</h3>
+    </div>
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title pb-4">Update Your Profile</h4>
+            <form class="forms-sample" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              
+              <div class="form-group">
+                <label for="exampleInputName1">Vendor Name</label>
+                <input type="text" class="form-control" id="exampleInputName1" name="VName" value="{{user.0.SellerName}}" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea1">Address</label>
+                <textarea class="form-control" id="exampleTextarea1" name="VAddress" rows="4" placeholder="Address" value="{{other.0.VendorAddress}}" ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName1">Business Name</label>
+                <input type="text" class="form-control" id="exampleInputName1" name="BName" placeholder="Name" value="{{seller.0.BusinessName}}">
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea1">Business Address</label>
+                <textarea class="form-control" id="exampleTextarea1" name="BAddress" rows="4" placeholder="Address" required value="{{ other.0.BusinessAddress}}"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea1">Email</label>
+                <input type="email" class="form-control" id="exampleInputName1" name="BEmail" placeholder="Email" value="{{seller.0.Primary_key}}" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea1">Mobile Number</label>
+                <input type="text" class="form-control" id="exampleInputName1" name="BMobile" placeholder="Mobile Number" value="{{other.0.MobileNumber}}" required>
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea1">GST Number</label>
+                <input type="text" class="form-control" id="exampleInputName1" name="BGst" placeholder="GST Number" value="{{seller.0.GstNumber}}">
+              </div>
+              <div class="form-group">
+                <label>Buiness logo / Your Image</label>
+                <input type="file" name="img[]" class="file-upload-default" >
+                <div class="input-group col-xs-12">
+                  <input type="file" class="btn btn-gradient-primary btn-fw" name="Bimages" placeholder="Upload Image" value="{{other.0.VendorImage}}" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+              <button class="btn btn-light">Cancel</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+{% endblock body  %}
