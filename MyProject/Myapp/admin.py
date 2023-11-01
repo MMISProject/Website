@@ -8,7 +8,7 @@ class ProductInformation2(admin.ModelAdmin):
 
 @admin.register(UserInformation)
 class UserInformation2(admin.ModelAdmin):
-    list_display=['VendorImage','VendorName','BusinessName',"GstNumber"]
+    list_display=['VendorImage','VendorName','BusinessName',"GstNumber","VendorAddress","BusinessAddress"]
 
 @admin.register(MobileVerificationNumber)
 class MobileVer(admin.ModelAdmin):

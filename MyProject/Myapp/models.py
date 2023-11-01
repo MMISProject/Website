@@ -8,6 +8,7 @@ class ProductInformation(models.Model):
     ProductDesc=models.TextField()
     ProductImage=models.ImageField(upload_to='Images')
     ProductPrice=models.IntegerField()
+    Primary_key=models.CharField(max_length=122)
     
 
 class UserInformation(models.Model):
@@ -37,6 +38,13 @@ class SellerBuinsessInformation(models.Model):
     Primary_key=models.CharField(max_length=122)    
 
     
+class BusinessSales(models.Model):
+    ProductId=models.CharField(max_length=122)
+    Counter=models.IntegerField(default=0)
     
     
-    
+class ProductOrder(models.Model):
+    productid=models.CharField(max_length=120)
+    status=models.BooleanField(default=False)
+    date=models.CharField(max_length=122)
+    userid=models.CharField(max_length=122)

@@ -1,13 +1,13 @@
 from django.shortcuts import render,redirect
 from django.shortcuts import HttpResponseRedirect
 from django.contrib import messages
-from .models import ProductInformation,MobileVerificationNumber,SellerInformation,SellerBuinsessInformation,UserInformation
+from .models import ProductInformation,MobileVerificationNumber,SellerInformation,SellerBuinsessInformation,UserInformation,ProductOrder
 import re
 from . send_sms import OtpVerificationClass
 from datetime import date
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-
+import random
         
 
 def index(request):
@@ -21,19 +21,26 @@ def index(request):
     else:
         userInfo2=UserInformation.objects.filter(EmailId=request.user).values()
         print(userInfo2[0]['VendorImage'])
-    return render(request,"index.html",{"Seller":Seller_Info,"userinfo":userInfo2})
+    productOrder=ProductOrder.objects.all().values()
+    return render(request,"index.html",{"Seller":Seller_Info,"userinfo":userInfo2,"orders":productOrder})
 
 def Product(request):
-    return render(request,"pages/forms/Product.html")
+    product_list=ProductInformation.objects.filter(Primary_key=request.user).values()
+    
+    return render(request,"pages/forms/Product.html",{"list":product_list})
 
 def AddProduct(request):
-    
     if request.method=="POST":
         pName=request.POST['productName']
         pPrice=request.POST['productPrice']
         pDescription=request.POST['productDescription']
-        pImage=request.POST['images']
-        pInformation=ProductInformation()
+        pImage=request.FILES['images']
+        PnameSection=pName[0].upper()+pName[1].upper()+pPrice                
+        productid="P{}".format(PnameSection)
+        print(productid)
+        pInformation=ProductInformation(ProductId=productid,ProductName=pName,ProductDesc=pDescription,ProductImage=pImage,ProductPrice=pPrice,Primary_key=request.user)
+        pInformation.save()
+        return redirect('Product_Section')
     return render(request,"pages/forms/AddProduct.html")
 
 
@@ -167,7 +174,9 @@ def Profile(request):
     print(request.user)
     UserInfo=SellerInformation.objects.filter(Primary_key=request.user).values()
     print(UserInfo)
+    print(request.user)
     BusinessInfo=SellerBuinsessInformation.objects.filter(Primary_key=request.user).values()
-    print(BusinessInfo[0]['BusinessName'])
+    print(BusinessInfo)
     user=UserInformation.objects.filter(EmailId=request.user).values()
+    print(user)
     return render(request,"pages/forms/profile.html",{"user":UserInfo,"seller":BusinessInfo,"other":user})
